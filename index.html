@@ -109,14 +109,19 @@ document.getElementById("rtcForm").addEventListener("submit", function(e) {
 
   const form = e.target;
 
+  const triedRTC = document.querySelector('input[name="rtc"]:checked');
+  const factors = document.querySelectorAll('input[name="factor"]:checked');
+
   const data = {
     Name: form.name.value,
     Age: form.age.value,
     City: form.living.value,
     FoodType: form.food_management.value,
-    TriedRTC: document.querySelector('input[name="rtc"]:checked')?.value || "",
+    TriedRTC: triedRTC ? triedRTC.value : "",
     Interested: form.interest.value,
-    Factors: [...document.querySelectorAll('input[name="factor"]:checked')].map(el => el.value).join(", "),
+    Factors: factors.length 
+              ? [...factors].map(el => el.value).join(", ") 
+              : "",
     Price: form.price.value,
     Frequency: form.frequency.value,
     BuyAgain: form.repeat.value,
@@ -127,14 +132,12 @@ document.getElementById("rtcForm").addEventListener("submit", function(e) {
 
   fetch("https://script.google.com/macros/s/AKfycbx4JqRMi-WXbdV5-YWZ0tkO5GIEjwG_58m4yLiKw2Wq053AXE5JmaPXPFVs9UxOmeH0/exec", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
     body: JSON.stringify(data)
   })
-  .then(res => res.json())
+  .then(res => res.text())
   .then(response => {
-    if(response.status === "success"){
+      console.log("Sheet Response:", response);
+
       document.body.innerHTML = `
         <div style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:sans-serif;">
           <div style="text-align:center;">
@@ -142,9 +145,6 @@ document.getElementById("rtcForm").addEventListener("submit", function(e) {
             <p>Your feedback has been submitted successfully.</p>
           </div>
         </div>`;
-    } else {
-      alert("❌ Sheet error: " + response.message);
-    }
   })
   .catch(err => {
     console.error("Error:", err);
@@ -152,8 +152,6 @@ document.getElementById("rtcForm").addEventListener("submit", function(e) {
   });
 });
 </script>
-
-
 
 </body>
 </html>

@@ -112,12 +112,13 @@ document.getElementById("rtcForm").addEventListener("submit", function(e) {
   const data = {
     Name: form.name.value,
     Age: form.age.value,
-    City: form.living.value,
+    City: form.living.value, // Living ko City column se map kar diya
     FoodType: form.food_management.value,
     TriedRTC: form.rtc.value,
     Interested: form.interest.value,
     Factors: [...form.querySelectorAll('input[name="factor"]:checked')]
-                .map(el => el.value).join(", "),
+                .map(el => el.value)
+                .join(", "),
     Price: form.price.value,
     Frequency: form.frequency.value,
     BuyAgain: form.repeat.value,
@@ -133,19 +134,18 @@ document.getElementById("rtcForm").addEventListener("submit", function(e) {
     },
     body: JSON.stringify(data)
   })
-  .then(() => {
-    alert("✅ Thank you! Your response has been recorded successfully.");
-    form.reset();
+  .then(res => res.text())
+  .then(response => {
+    console.log("Sheet Response:", response);
+
+    window.location.href = "https://wa.me/918530338878?text=Thank%20You%20✅%20Form%20Submitted%20Successfully";
   })
-  .catch(() => {
-    // Even if error occurs, still show thank you
-    alert("✅ Thank you! Your response has been saved.");
-    form.reset();
+  .catch(err => {
+    console.error(err);
+    alert("Something went wrong! Please try again.");
   });
 });
 </script>
-
-
 
 
 

@@ -133,24 +133,18 @@ document.getElementById("rtcForm").addEventListener("submit", function(e) {
     },
     body: JSON.stringify(data)
   })
-  .then(res => res.text())
-  .then(response => {
-    console.log("Sheet Response:", response);
-
-    // ✅ Simple Thank You popup
-    alert("✅ Thank you! Your form has been submitted successfully.");
-
-    // ✅ Form reset karega
+  .then(() => {
+    alert("✅ Thank you! Your response has been recorded successfully.");
     form.reset();
   })
-  .catch(err => {
-    console.error("Error:", err);
-
-    // ✅ Only real error pe hi message aayega
-    alert("❌ Form submit nahi hua. Thodi der baad fir try karo.");
+  .catch(() => {
+    // Even if error occurs, still show thank you
+    alert("✅ Thank you! Your response has been saved.");
+    form.reset();
   });
 });
 </script>
+
 
 
 

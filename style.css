@@ -1,74 +1,99 @@
 body {
-  background: linear-gradient(135deg, #ff7b00, #ffae42);
-  font-family: 'Segoe UI', sans-serif;
   margin: 0;
-  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ff7e00, #ffb347);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.form-card {
-  max-width: 450px;
-  margin: auto;
+.container {
   background: white;
-  border-radius: 15px;
   padding: 25px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  width: 95%;
+  max-width: 420px;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
 }
 
-h1 {
+h2 {
   text-align: center;
   margin-bottom: 5px;
-  color: #ff7b00;
+  color: #ff7e00;
 }
 
 .subtitle {
   text-align: center;
-  font-size: 14px;
   margin-bottom: 20px;
+  font-size: 14px;
   color: #555;
 }
 
 label {
   font-weight: bold;
-  display: block;
   margin-top: 15px;
-  margin-bottom: 5px;
+  display: block;
 }
 
 input, select, textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
+  margin-top: 6px;
   border-radius: 8px;
+  border: 1px solid #ccc;
   font-size: 14px;
 }
 
 textarea {
   resize: none;
-  height: 80px;
 }
 
-.options {
+.radio-group,
+.checkbox-group {
   display: flex;
-  gap: 10px;
   flex-wrap: wrap;
-  margin-top: 5px;
+  gap: 15px;
+  margin-top: 8px;
+}
+
+.radio-group label,
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto;
 }
 
 button {
-  margin-top: 20px;
   width: 100%;
+  margin-top: 20px;
   padding: 12px;
-  background: linear-gradient(to right, #ff7b00, #ff9f1c);
   border: none;
   border-radius: 10px;
-  color: white;
   font-size: 16px;
-  font-weight: bold;
+  background: linear-gradient(135deg, #ff6a00, #ff9e00);
+  color: white;
   cursor: pointer;
-  transition: 0.3s;
+  font-weight: bold;
+  transition: 0.3s ease;
 }
 
 button:hover {
-  transform: scale(1.02);
-  background: linear-gradient(to right, #ff6a00, #ff9f1c);
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+@media(max-width: 480px){
+  .radio-group,
+  .checkbox-group {
+    flex-direction: column;
+    gap: 8px;
+  }
 }

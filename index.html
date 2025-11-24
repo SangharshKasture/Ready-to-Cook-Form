@@ -112,13 +112,11 @@ document.getElementById("rtcForm").addEventListener("submit", function(e) {
   const data = {
     Name: form.name.value,
     Age: form.age.value,
-    City: form.living.value, // Living ko City column se map kar diya
+    City: form.living.value,
     FoodType: form.food_management.value,
-    TriedRTC: form.rtc.value,
+    TriedRTC: document.querySelector('input[name="rtc"]:checked')?.value || "",
     Interested: form.interest.value,
-    Factors: [...form.querySelectorAll('input[name="factor"]:checked')]
-                .map(el => el.value)
-                .join(", "),
+    Factors: [...document.querySelectorAll('input[name="factor"]:checked')].map(el => el.value).join(", "),
     Price: form.price.value,
     Frequency: form.frequency.value,
     BuyAgain: form.repeat.value,
@@ -129,24 +127,29 @@ document.getElementById("rtcForm").addEventListener("submit", function(e) {
 
   fetch("https://script.google.com/macros/s/AKfycbwbiGVD-UNGlzUYEbMZdyiiGjhGNhxyII2OIF9lsKEwvSsEpaW05OkRtXXaebTgQoZm/exec", {
     method: "POST",
+    mode: "no-cors",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(data)
   })
-  .then(res => res.text())
-  .then(response => {
-    console.log("Sheet Response:", response);
-
-    window.location.href = "https://wa.me/918530338878?text=Thank%20You%20✅%20Form%20Submitted%20Successfully";
+  .then(() => {
+    document.body.innerHTML = `
+      <div style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:sans-serif;">
+        <div style="text-align:center;">
+          <h1>✅ Thank You!</h1>
+          <p>Your feedback has been submitted successfully.</p>
+        </div>
+      </div>
+    `;
   })
   .catch(err => {
-    console.error(err);
-    alert("Something went wrong! Please try again.");
+    console.error("Error:", err);
+    alert("❌ Data not submitted. Check internet or script.");
   });
+
 });
 </script>
-
 
 
 </body>

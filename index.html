@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>READY TO COOK - Research</title>
+  <title>READY TO COOK - Market Research</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<form>
+<div class="form-wrapper">
 <h2>READY TO COOK - Market Research</h2>
 
-<label>Your Name:</label>
-<input type="text" name="name" required>
+<form>
 
-<label>Age:</label>
+<div class="form-group">
+<label>Your Name</label>
+<input type="text" required>
+</div>
+
+<div class="form-group">
+<label>Age</label>
 <select>
 <option>Below 18</option>
 <option>18–25</option>
 <option>26–35</option>
 <option>35+</option>
 </select>
+</div>
 
+<div class="form-group">
 <label>Where do you live?</label>
 <select>
 <option>Hostel</option>
@@ -27,7 +35,9 @@
 <option>Flat</option>
 <option>Family House</option>
 </select>
+</div>
 
+<div class="form-group">
 <label>How do you manage food daily?</label>
 <select>
 <option>Self cooking</option>
@@ -35,24 +45,36 @@
 <option>Tiffin</option>
 <option>Outside food</option>
 </select>
+</div>
 
+<div class="form-group">
 <label>Tried Ready to Cook before?</label>
-<input type="radio" name="rtc"> Yes  
-<input type="radio" name="rtc"> No  
+<div class="radio-group">
+<label><input type="radio" name="rtc"> Yes</label>
+<label><input type="radio" name="rtc"> No</label>
+</div>
+</div>
 
-<label>Interested in Ready To Cook product?</label>
+<div class="form-group">
+<label>Interested in Ready To Cook?</label>
 <select>
 <option>Yes</option>
 <option>No</option>
 <option>Maybe</option>
 </select>
+</div>
 
+<div class="form-group">
 <label>Most important for you?</label>
-<input type="checkbox"> Taste  
-<input type="checkbox"> Price  
-<input type="checkbox"> Health  
-<input type="checkbox"> Time Saving  
+<div class="checkbox-group">
+<label><input type="checkbox"> Taste</label>
+<label><input type="checkbox"> Price</label>
+<label><input type="checkbox"> Health</label>
+<label><input type="checkbox"> Time Saving</label>
+</div>
+</div>
 
+<div class="form-group">
 <label>Price you are comfortable paying?</label>
 <select>
 <option>₹40–60</option>
@@ -60,32 +82,43 @@
 <option>₹80–100</option>
 <option>₹100+</option>
 </select>
+</div>
 
+<div class="form-group">
 <label>How many times per month?</label>
 <select>
 <option>1–2</option>
 <option>3–5</option>
 <option>5+</option>
 </select>
+</div>
 
+<div class="form-group">
 <label>Will you buy again if taste is good?</label>
 <select>
 <option>Yes</option>
 <option>No</option>
 <option>Maybe</option>
 </select>
+</div>
 
+<div class="form-group">
 <label>Will you recommend?</label>
 <select>
 <option>Yes</option>
 <option>No</option>
 </select>
+</div>
 
-<label>Suggestions:</label>
-<textarea rows="4"></textarea>
+<div class="form-group">
+<label>Suggestions</label>
+<textarea></textarea>
+</div>
 
 <button type="submit">Submit Feedback</button>
+
 </form>
+</div>
 
 </body>
 </html>

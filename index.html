@@ -41,11 +41,22 @@
 <option>Outside food</option>
 </select>
 
-<label>Tried Ready To Cook before?</label>
-<div class="radio-group">
-  <label><input type="radio" name="rtc" value="Yes"> Yes</label>
-  <label><input type="radio" name="rtc" value="No"> No</label>
+<div class="form-group">
+  <label>Tried Ready To Cook before?</label>
+
+  <div class="option-row">
+    <label>
+      <input type="radio" name="rtc" value="Yes">
+      Yes
+    </label>
+
+    <label>
+      <input type="radio" name="rtc" value="No">
+      No
+    </label>
+  </div>
 </div>
+
 
 <label>Interested in Ready To Cook product?</label>
 <select name="interest">
@@ -54,13 +65,17 @@
 <option>Maybe</option>
 </select>
 
-<label>Most important for you?</label>
-<div class="checkbox-group">
-  <label><input type="checkbox" name="priority" value="Taste"> Taste</label>
-  <label><input type="checkbox" name="priority" value="Price"> Price</label>
-  <label><input type="checkbox" name="priority" value="Health"> Health</label>
-  <label><input type="checkbox" name="priority" value="Time Saving"> Time Saving</label>
+<div class="form-group">
+  <label>Most Important Factor</label>
+
+  <div class="option-row">
+    <label><input type="checkbox" name="factor" value="Taste"> Taste</label>
+    <label><input type="checkbox" name="factor" value="Price"> Price</label>
+    <label><input type="checkbox" name="factor" value="Health"> Health</label>
+    <label><input type="checkbox" name="factor" value="Time Saving"> Time Saving</label>
+  </div>
 </div>
+
 
 <label>Price you are comfortable paying?</label>
 <select name="price">

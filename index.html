@@ -112,7 +112,7 @@ document.getElementById("rtcForm").addEventListener("submit", function(e) {
   const data = {
     Name: form.name.value,
     Age: form.age.value,
-    City: form.living.value,           // Living ko City column se map kar diya
+    City: form.living.value,
     FoodType: form.food_management.value,
     TriedRTC: form.rtc.value,
     Interested: form.interest.value,
@@ -137,14 +137,19 @@ document.getElementById("rtcForm").addEventListener("submit", function(e) {
   .then(response => {
     console.log("Sheet Response:", response);
 
-    //window.location.href = "https://wa.me/918530338878?text=Thank%20You%20✅%20Form%20Submitted%20Successfully";
+    // ✅ Simple success message instead of WhatsApp
+    alert("✅ Thank you! Your response has been submitted successfully.");
+
+    // Optional: reset form
+    form.reset();
   })
   .catch(err => {
     console.error(err);
-    alert("Something went wrong! Please try again.");
+    alert("❌ Something went wrong! Please try again.");
   });
 });
 </script>
+
 
 
 </body>

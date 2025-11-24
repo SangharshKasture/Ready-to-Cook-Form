@@ -21,6 +21,7 @@ h2 {
   text-align: center;
   margin-bottom: 5px;
   color: #ff7e00;
+  font-size: 22px;
 }
 
 .subtitle {
@@ -34,21 +35,27 @@ label {
   font-weight: bold;
   margin-top: 15px;
   display: block;
+  font-size: 14px;
+  color: #333;
 }
 
-input, select, textarea {
+input[type="text"],
+select,
+textarea {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-top: 6px;
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 14px;
+  box-sizing: border-box;
 }
 
 textarea {
   resize: none;
 }
 
+/* ✅ Radio & Checkbox Proper Alignment */
 .radio-group,
 .checkbox-group {
   display: flex;
@@ -61,22 +68,36 @@ textarea {
 .checkbox-group label {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
   font-weight: normal;
   cursor: pointer;
+  font-size: 14px;
+  background: #f9f9f9;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  transition: 0.2s ease;
+}
+
+.radio-group label:hover,
+.checkbox-group label:hover {
+  background: #fff1e3;
+  border-color: #ff7e00;
 }
 
 input[type="radio"],
 input[type="checkbox"] {
-  width: auto;
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
+/* ✅ Submit Button */
 button {
   width: 100%;
-  margin-top: 20px;
-  padding: 12px;
+  margin-top: 25px;
+  padding: 14px;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   font-size: 16px;
   background: linear-gradient(135deg, #ff6a00, #ff9e00);
   color: white;
@@ -90,10 +111,41 @@ button:hover {
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-@media(max-width: 480px){
+/* ✅ Mobile Responsive */
+@media(max-width: 480px) {
+
+  .container {
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  label {
+    font-size: 13px;
+  }
+
   .radio-group,
   .checkbox-group {
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
+  }
+
+  .radio-group label,
+  .checkbox-group label {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  input[type="text"],
+  select,
+  textarea {
+    font-size: 13px;
+  }
+
+  button {
+    font-size: 14px;
   }
 }

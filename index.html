@@ -1,84 +1,149 @@
-<form>
-<h2>READY TO COOK - Market Research</h2>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>READY TO COOK - Market Research</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<label>Your Name:</label>
-<input type="text" name="name" required>
+<div class="form-card">
+<h1>READY TO COOK</h1>
+<p class="subtitle">Market Research Survey</p>
 
-<label>Age:</label>
-<select>
-  <option>Below 18</option>
-  <option>18–25</option>
-  <option>26–35</option>
-  <option>35+</option>
-</select>
+<form id="researchForm" onsubmit="submitForm(event)">
 
-<label>Where do you live?</label>
-<select>
-  <option>Hostel</option>
-  <option>PG</option>
-  <option>Flat</option>
-  <option>Family House</option>
-</select>
+  <label>Your Name</label>
+  <input type="text" id="name" required>
 
-<label>How do you manage food daily?</label>
-<select>
-  <option>Self cooking</option>
-  <option>Mess</option>
-  <option>Tiffin</option>
-  <option>Outside food</option>
-</select>
+  <label>Age Group</label>
+  <select id="age">
+    <option>Below 18</option>
+    <option>18–25</option>
+    <option>26–35</option>
+    <option>35+</option>
+  </select>
 
-<label>Tried Ready To Cook before?</label>
-<div class="inline-options">
-  <label><input type="radio" name="rtc"> Yes</label>
-  <label><input type="radio" name="rtc"> No</label>
-</div>
+  <label>Living Type</label>
+  <select id="living">
+    <option>Hostel</option>
+    <option>PG</option>
+    <option>Flat</option>
+    <option>Family House</option>
+  </select>
 
-<label>Interested in Ready To Cook?</label>
-<select>
-  <option>Yes</option>
-  <option>No</option>
-  <option>Maybe</option>
-</select>
+  <label>How do you manage food daily?</label>
+  <select id="food">
+    <option>Self Cooking</option>
+    <option>Mess</option>
+    <option>Tiffin</option>
+    <option>Outside Food</option>
+  </select>
 
-<label>Most important for you?</label>
-<div class="inline-options">
-  <label><input type="checkbox"> Taste</label>
-  <label><input type="checkbox"> Price</label>
-  <label><input type="checkbox"> Health</label>
-  <label><input type="checkbox"> Time Saving</label>
-</div>
+  <label>Tried Ready To Cook before?</label>
+  <div class="options">
+    <input type="radio" name="rtc" value="Yes" checked> Yes
+    <input type="radio" name="rtc" value="No"> No
+  </div>
 
-<label>Price you are comfortable paying?</label>
-<select>
-  <option>₹40–60</option>
-  <option>₹60–80</option>
-  <option>₹80–100</option>
-  <option>₹100+</option>
-</select>
+  <label>Interested in Ready To Cook?</label>
+  <select id="interest">
+    <option>Yes</option>
+    <option>No</option>
+    <option>Maybe</option>
+  </select>
 
-<label>How many times per month?</label>
-<select>
-  <option>1–2</option>
-  <option>3–5</option>
-  <option>5+</option>
-</select>
+  <label>Most Important Factor</label>
+  <div class="options">
+    <input type="checkbox" value="Taste"> Taste
+    <input type="checkbox" value="Price"> Price
+    <input type="checkbox" value="Health"> Health
+    <input type="checkbox" value="Time Saving"> Time Saving
+  </div>
 
-<label>Will you buy again if taste is good?</label>
-<select>
-  <option>Yes</option>
-  <option>No</option>
-  <option>Maybe</option>
-</select>
+  <label>Price Range Comfortable With</label>
+  <select id="price">
+    <option>₹40–60</option>
+    <option>₹60–80</option>
+    <option>₹80–100</option>
+    <option>₹100+</option>
+  </select>
 
-<label>Will you recommend?</label>
-<select>
-  <option>Yes</option>
-  <option>No</option>
-</select>
+  <label>Frequency per Month</label>
+  <select id="frequency">
+    <option>1–2 times</option>
+    <option>3–5 times</option>
+    <option>5+ times</option>
+  </select>
 
-<label>Suggestions:</label>
-<textarea rows="4"></textarea>
+  <label>Will you buy again if taste is good?</label>
+  <select id="again">
+    <option>Yes</option>
+    <option>No</option>
+    <option>Maybe</option>
+  </select>
 
-<button type="submit">Submit Feedback</button>
+  <label>Suggestions</label>
+  <textarea id="suggestions"></textarea>
+
+  <button type="submit">Submit & Send 🚀</button>
+
 </form>
+</div>
+
+<script>
+function submitForm(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const age = document.getElementById("age").value;
+  const living = document.getElementById("living").value;
+  const food = document.getElementById("food").value;
+  const interest = document.getElementById("interest").value;
+  const price = document.getElementById("price").value;
+  const freq = document.getElementById("frequency").value;
+  const suggestions = document.getElementById("suggestions").value;
+
+  let message = `
+READY TO COOK - SURVEY RESPONSE
+Name: ${name}
+Age: ${age}
+Living: ${living}
+Food: ${food}
+Interested: ${interest}
+Price Range: ${price}
+Frequency: ${freq}
+Suggestions: ${suggestions}
+  `;
+
+  // ✅ WhatsApp Redirect
+  let whatsappUrl = `https://wa.me/91YOURNUMBER?text=` + encodeURIComponent(message);
+  window.open(whatsappUrl);
+
+  // ✅ Email sending using FormSubmit
+  sendEmail(name, age, living, food, interest, price, freq, suggestions);
+}
+
+function sendEmail(name, age, living, food, interest, price, freq, suggestions) {
+  fetch("https://formsubmit.co/ajax/YOURMAIL@gmail.com", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      Name: name,
+      Age: age,
+      Living: living,
+      Food: food,
+      Interest: interest,
+      Price: price,
+      Frequency: freq,
+      Suggestions: suggestions
+    })
+  }).then(response => response.json())
+    .then(data => alert("Form Sent to WhatsApp & Email Successfully ✅"));
+}
+</script>
+
+</body>
+</html>

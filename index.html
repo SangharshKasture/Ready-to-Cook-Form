@@ -137,18 +137,21 @@ document.getElementById("rtcForm").addEventListener("submit", function(e) {
   .then(response => {
     console.log("Sheet Response:", response);
 
-    // ✅ Simple success message instead of WhatsApp
-    alert("✅ Thank you! Your response has been submitted successfully.");
+    // ✅ Simple Thank You popup
+    alert("✅ Thank you! Your form has been submitted successfully.");
 
-    // Optional: reset form
+    // ✅ Form reset karega
     form.reset();
   })
   .catch(err => {
-    console.error(err);
-    alert("❌ Something went wrong! Please try again.");
+    console.error("Error:", err);
+
+    // ✅ Only real error pe hi message aayega
+    alert("❌ Form submit nahi hua. Thodi der baad fir try karo.");
   });
 });
 </script>
+
 
 
 
